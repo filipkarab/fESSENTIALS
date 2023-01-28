@@ -1,0 +1,22 @@
+name: fESSENTIALS
+author: FilipeeX (filipeexForNow)
+description: A minecraft bukkit/spigot plugin, which allows you to access almost every feature of plugins like CMI or EsssentialsX, for free and with the ability to customize everything.
+version: 1.0
+api-version: 1.13
+main: filipeex.fessentials.Main
+
+commands:
+  fly:
+    usage: /<command> [player]
+    description: Allows you to enable/disable fly for yourself, or for another player.
+
+permissions:
+  fessentials.fly:
+    description: Allows you to use /fly, if without fessentials.fly.others permission, then only for yourself.
+    default: op
+  fessentials.fly.others:
+    default: op
+    description: Allows you to use /fly on other players, if the fessentials.fly permission is present.
+  fessentials.fly.keep:
+    default: op
+    description: If you were in survival mode and you had /fly turned on before leaving the server, after joining you will keep your /fly.
