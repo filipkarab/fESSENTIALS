@@ -3,6 +3,7 @@ package filipeex.fessentials.listeners;
 import filipeex.fessentials.config.Config;
 import filipeex.fessentials.config.Database;
 import filipeex.fessentials.util.Fly;
+import filipeex.fessentials.util.God;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -35,6 +36,11 @@ public class JoinLeaveListener implements Listener {
             Fly.set(p, false);
         }
 
+        // KEEP-GOD
+        if (!p.hasPermission("fessentials.god.keep")) {
+            God.set(p, false);
+        }
+
     }
 
     // ANY OTHER JOIN THAT'S NOT FIRST
@@ -45,6 +51,11 @@ public class JoinLeaveListener implements Listener {
             Fly.set(p, Fly.get(p));
         } else {
             Fly.set(p, false);
+        }
+
+        // KEEP-GOD
+        if (!p.hasPermission("fessentials.god.keep")) {
+            God.set(p, false);
         }
 
     }
@@ -60,6 +71,9 @@ public class JoinLeaveListener implements Listener {
 
         // FIRST FLY FALSE DATABASE INITIATION
         Fly.set(p, false);
+
+        // FIRST GOD FALSE DATABASE INITIATION
+        God.set(p, false);
 
     }
 

@@ -1,9 +1,11 @@
 package filipeex.fessentials;
 
 import filipeex.fessentials.commands.FlyCMD;
+import filipeex.fessentials.commands.GodCMD;
 import filipeex.fessentials.config.Config;
 import filipeex.fessentials.config.Database;
 import filipeex.fessentials.console.Debug;
+import filipeex.fessentials.listeners.DamageListener;
 import filipeex.fessentials.listeners.JoinLeaveListener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -71,10 +73,6 @@ public class Main extends JavaPlugin {
 
     private void createDatabaseFiles() {
 
-        Debug.debug("Loading the flydb.yml database file...");
-        Database.create("flydb");
-        Debug.debug("Successfully loaded the flydb.yml database file!");
-
         Debug.debug("Loading the uuiddb.yml database file...");
         Database.create("uuiddb");
         Debug.debug("Successfully loaded the uuiddb.yml database file!");
@@ -82,6 +80,14 @@ public class Main extends JavaPlugin {
         Debug.debug("Loading the ipdb.yml database file...");
         Database.create("ipdb");
         Debug.debug("Successfully loaded the ipdb.yml database file!");
+
+        Debug.debug("Loading the flydb.yml database file...");
+        Database.create("flydb");
+        Debug.debug("Successfully loaded the flydb.yml database file!");
+
+        Debug.debug("Loading the goddb.yml database file...");
+        Database.create("goddb");
+        Debug.debug("Successfully loaded the goddb.yml database file!");
 
     }
 
@@ -112,6 +118,10 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new JoinLeaveListener(), this);
         Debug.debug("Successfully registered JoinLeaveListener.java!");
 
+        Debug.debug("Registering DamageListener.java...");
+        pm.registerEvents(new DamageListener(), this);
+        Debug.debug("Successfully registered DamageListener.java!");
+
     }
 
     private void registerCommands() {
@@ -119,6 +129,10 @@ public class Main extends JavaPlugin {
         Debug.debug("Registering /fly command...");
         Objects.requireNonNull(getCommand("fly")).setExecutor(new FlyCMD());
         Debug.debug("Successfully registered /fly command!");
+
+        Debug.debug("Registering /god command...");
+        Objects.requireNonNull(getCommand("god")).setExecutor(new GodCMD());
+        Debug.debug("Successfully registered /god command!");
 
     }
 

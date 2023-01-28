@@ -7,8 +7,11 @@ main: filipeex.fessentials.Main
 
 commands:
   fly:
-    usage: /<command> [player]
-    description: Allows you to enable/disable fly for yourself, or for another player.
+    usage: /<command> [player/*/**] [true/false/toggle]
+    description: Allows you to enable/disable fly for yourself, or for another player(s).
+  god:
+    usage: /<command> [player/*/**] [true/false/toggle]
+    description: Allows you to enable/disable god mode for yourself, or for another player(s).
 
 permissions:
   fessentials.fly:
@@ -20,3 +23,12 @@ permissions:
   fessentials.fly.keep:
     default: op
     description: If you were in survival mode and you had /fly turned on before leaving the server, after joining you will keep your /fly.
+  fessentials.god:
+    description: Allows you to use /god, if without fessentials.god.others permission, then only for yourself.
+    default: op
+  fessentials.god.others:
+    default: op
+    description: Allows you to use /fly on other players, if the fessentials.god permission is present.
+  fessentials.god.keep:
+    default: op
+    description: If you were in survival mode and you had /god turned on before leaving the server, after joining you will keep your god mode.
